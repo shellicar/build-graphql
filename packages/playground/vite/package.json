@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite",
     "build": "vite build",
-    "type-check": "tsc"
+    "start": "vite preview",
+    "check": "tsc"
   },
   "devDependencies": {
     "@shellicar/build-graphql": "workspace:^",
