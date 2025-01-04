@@ -68,7 +68,7 @@
       "*": ["./dist/*", "./*"]
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "*.md"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
