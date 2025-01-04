@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-graphql",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build plugin that loads GraphQL files and makes them importable via a virtual typedefs module.",
   "license": "MIT",
   "homepage": "https://github.com/shellicar/build-graphql#readme",
