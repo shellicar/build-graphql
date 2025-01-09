@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Stephen Hellicar",
   "description": "Build plugin that loads GraphQL files and makes them importable via a virtual typedefs module.",
-  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform"],
+  "keywords": ["build", "plugin", "graphql", "esbuild", "vite"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shellicar/build-graphql.git"
