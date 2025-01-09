@@ -5,8 +5,9 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "tsx build.mts",
+    "dev": "tsx build.mts --watch",
     "start": "node .",
-    "type-check": "tsc"
+    "type-check": "tsc -p tsconfig.check.json"
   },
   "keywords": [],
   "author": "",

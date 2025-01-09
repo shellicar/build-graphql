@@ -1,10 +1,12 @@
 {
   "name": "@shellicar/build-graphql",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
-  "version": "0.1.1",
-  "description": "Build plugin that loads GraphQL files and makes them importable via a virtual typedefs module.",
   "license": "MIT",
-  "homepage": "https://github.com/shellicar/build-graphql#readme",
+  "author": "Stephen Hellicar",
+  "description": "Build plugin that loads GraphQL files and makes them importable via a virtual typedefs module.",
+  "keywords": ["build", "plugin", "graphql", "esbuild", "vite"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shellicar/build-graphql.git"
@@ -12,7 +14,10 @@
   "bugs": {
     "url": "https://github.com/shellicar/build-graphql/issues"
   },
-  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform"],
+  "homepage": "https://github.com/shellicar/build-graphql#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -71,12 +76,8 @@
   "files": ["dist", "*.md"],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch src",
-    "prepublishOnly": "run-s build test ci",
-    "postpublish": "pnpm version --no-git-tag-version patch"
-  },
-  "publishConfig": {
-    "access": "public"
+    "dev": "tsup --watch",
+    "type-check": "tsc -p tsconfig.check.json"
   },
   "peerDependencies": {
     "@farmfe/core": ">=1",

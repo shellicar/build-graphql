@@ -1,6 +1,6 @@
-import type { Options } from 'tsup';
+import { defineConfig } from 'tsup';
 
-export default (<Options>{
+export default defineConfig({
   entry: ['src/**/*.ts'],
   clean: true,
   bundle: true,

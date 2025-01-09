@@ -7,7 +7,7 @@ const options: Options = {
   debug: true,
 };
 
-build({
+await build({
   entryPoints: ['src/main.ts'],
   outdir: 'dist',
   bundle: true,

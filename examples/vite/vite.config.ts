@@ -6,10 +6,12 @@ import Inspect from 'vite-plugin-inspect';
 const options: Options = {
   globPattern: '../**/*.graphql',
   debug: true,
-  typedefsPath: 'build-graphql/dist/core/typedefs.js',
 };
 
 export default defineConfig({
   clearScreen: false,
+  build: {
+    minify: false,
+  },
   plugins: [Inspect(), GraphQLPlugin(options)],
 });

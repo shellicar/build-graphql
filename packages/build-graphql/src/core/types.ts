@@ -10,15 +10,6 @@ export interface Options {
    */
   globIgnore?: string;
   /**
-   * Root dir to search for graphql files
-   * @default process.cwd()
-   */
-  rootDir?: string;
-  /**
-   * Pattern to match the resolved typedefs path
-   */
-  typedefsPath?: string;
-  /**
    * Ignores errors, otherwise errors will be thrown if graphql files are not found/imported and the typedefs file is not found
    */
   ignoreErrors?: boolean;
@@ -32,3 +23,8 @@ export interface Options {
    */
   mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
 }
+
+export type ILogger = {
+  debug: (typeof console)['debug'];
+  error: (typeof console)['error'];
+};
