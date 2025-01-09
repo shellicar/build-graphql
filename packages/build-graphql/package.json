@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-graphql",
   "type": "module",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Build plugin that loads GraphQL files and makes them importable via a virtual typedefs module.",
   "license": "MIT",
   "homepage": "https://github.com/shellicar/build-graphql#readme",
@@ -71,9 +71,8 @@
   "files": ["dist", "*.md"],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch src",
-    "prepublishOnly": "run-s build test ci",
-    "postpublish": "pnpm version --no-git-tag-version patch"
+    "dev": "tsup --watch",
+    "type-check": "tsc -p tsconfig.check.json"
   },
   "publishConfig": {
     "access": "public"

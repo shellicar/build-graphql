@@ -1,104 +1,58 @@
-import path from 'node:path';
-import { generateContentsFromGraphqlString, generateGraphQLString } from '@luckycatfactory/esbuild-graphql-loader';
 import { glob } from 'glob';
 import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
 import { defaults } from './defaults';
-import type { Options } from './types';
+import { loadGraphqlModule, loadVirtualModule } from './graphql';
+import { virtualModuleId } from './module';
+import type { ILogger, Options } from './types';
 
-type GraphqlFile = {
-  path: string;
-  name: string;
-};
+const resolveVirtualId = (id: string) => `\0${id}`;
 
-const findGraphQLFiles = async (options: { globPattern: string; globIgnore: string }): Promise<GraphqlFile[]> => {
-  const files = await glob(options.globPattern, { ignore: options.globIgnore });
-  return files.map((file, index) => ({
-    path: path.join(process.cwd(), file).replace(/\\/g, '/'),
-    name: `gql_${index}`,
-  }));
-};
-
-const generateTypedefsFile = (files: GraphqlFile[]) => {
-  const importStatements = files.map((f) => `import ${f.name} from '${f.path}';`);
-
-  const documentsArray = `[${files.map((f) => f.name).join(', ')}]`;
-
-  const code = [...importStatements, `export default ${documentsArray};`];
-  return code.join('\n');
-};
-
-const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions, meta) => {
+const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions) => {
   const options = {
     ...defaults,
     ...inputOptions,
   };
-  const log = (message: any, ...args: any) => {
-    if (options.debug) {
-      console.log('[graphql]:', message, ...args);
-    }
+  const debug = options.debug ? (message?: unknown, ...optionalParams: unknown[]) => console.debug(`[version] ${message}`, ...optionalParams) : () => {};
+  const error = (message?: unknown, ...optionalParams: unknown[]) => console.error(`[version] ${message}`, ...optionalParams);
+  const logger: ILogger = {
+    debug,
+    error,
   };
 
-  if (options.rootDir == null) {
-    options.rootDir = process.cwd();
-  }
-  const rootDir = options.rootDir;
   let graphqlMatched: string[] = [];
   const graphqlImports: string[] = [];
   let importedTypedefs = false;
-  log({ options });
-
-  const MODULE_ID = '@shellicar/build-graphql/typedefs';
-
-  const typedefsPattern = new RegExp(options.typedefsPath);
-
-  const matchTypedefs = (id: string) => {
-    if (meta.framework === 'vite') {
-      return typedefsPattern.test(id);
-    }
-    return id === MODULE_ID;
-  };
-  const matchGraphql = (id: string) => {
-    return id.endsWith('.graphql');
-  };
+  logger.debug({ options });
 
   return {
-    name: 'graphql',
+    name: 'unplugin-graphql',
+    enforce: 'pre',
     buildStart: async () => {
-      log('Build start');
       graphqlMatched = await glob(options.globPattern, { ignore: options.globIgnore });
+      logger.debug('Matched GraphQL files:', graphqlMatched);
     },
     resolveId(id) {
-      if (matchTypedefs(id)) {
-        return id;
+      if (id === virtualModuleId) {
+        return resolveVirtualId(id);
       }
-      if (matchGraphql(id)) {
-        return path.resolve(rootDir, id);
+      if (id.endsWith('.graphql')) {
+        return resolveVirtualId(id);
       }
-    },
-    loadInclude(id) {
-      return matchGraphql(id) || matchTypedefs(id);
     },
     load: async (id) => {
-      if (matchTypedefs(id)) {
+      if (id === resolveVirtualId(virtualModuleId)) {
         importedTypedefs = true;
-        const files = await findGraphQLFiles(options);
-        const code = generateTypedefsFile(files);
-        log(`Typedefs: \`${code}\``);
-        return { code, map: null };
+        return await loadVirtualModule(options, logger);
       }
-      if (matchGraphql(id)) {
-        const absolutePath = path.isAbsolute(id) ? id : path.resolve(rootDir, id);
-        const graphqlString = await generateGraphQLString(absolutePath);
+      const result = await loadGraphqlModule(id, options, logger);
+      if (result !== undefined) {
         graphqlImports.push(id);
-        return {
-          code: generateContentsFromGraphqlString(graphqlString, options.mapDocumentNode),
-          map: null,
-        };
+        return result;
       }
     },
     buildEnd: () => {
-      log('Build end', {
+      logger.debug('Build end', {
         graphqlMatched,
         graphqlImports,
         importedTypedefs,
@@ -107,6 +61,9 @@ const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions, meta) => {
         if (graphqlMatched.length === 0) {
           throw new Error(`No GraphQL files found for the pattern: ${options.globPattern}`);
         }
+        if (graphqlImports.length !== graphqlMatched.length) {
+          throw new Error('Some GraphQL files were not imported');
+        }
         if (!importedTypedefs) {
           throw new Error('Typedefs not imported. Make sure to import from @shellicar/build-graphql/typedefs');
         }
@@ -114,4 +71,5 @@ const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions, meta) => {
     },
   };
 };
+
 export const plugin = createUnplugin(graphqlPluginFactory);
