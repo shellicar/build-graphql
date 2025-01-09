@@ -1,8 +1,54 @@
 # @shellicar/build-graphql
 
+[![npm package](https://img.shields.io/npm/v/@shellicar/build-graphql.svg)](https://npmjs.com/package/@shellicar/build-graphql)
+[![build status](https://github.com/shellicar/build-graphql/actions/workflows/node.js.yml/badge.svg)](https://github.com/shellicar/build-graphql/actions/workflows/node.js.yml)
+
 Build plugin that loads GraphQL files and makes them available through a virtual module import.
 
-- ⚡️ Supports Vite, Webpack, Rspack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
+- ⚡️ Supports Vite, Webpack, Rspack, Vue CLI, Rollup, esbuild and more, powered by [unplugin].
+
+## Installation & Quick Start
+
+```sh
+npm i --save @shellicar/build-graphql
+```
+
+```sh
+pnpm add @shellicar/build-graphql
+```
+
+```ts
+// build.ts
+import GraphQLPlugin from '@shellicar/build-graphql/esbuild'
+
+await build({
+  // other options
+  plugins: [
+    GraphQLPlugin({ 
+      globPattern: 'src/**/*.graphql'
+    })
+  ]
+})
+```
+
+```ts
+// vite.config.ts
+import GraphQLPlugin from '@shellicar/build-graphql/vite'
+
+export default defineConfig({
+  // other options
+  plugins: [
+    GraphQLPlugin({ 
+      globPattern: 'src/**/*.graphql'
+    })
+  ],
+});
+```
+
+```ts
+// main.ts
+import typedefs from '@shellicar/build-graphql/typedefs'
+```
 
 <!-- BEGIN_ECOSYSTEM -->
 
@@ -79,5 +125,8 @@ See [types.ts](./packages/build-graphql/src/core/types.ts) for detailed options 
 
 ## Credits
 
-- [@luckycatfactory/esbuild-graphql-loader](https://github.com/luckycatfactory/esbuild-graphql-loader)
-- [unplugin](https://github.com/unjs/unplugin)
+- [@luckycatfactory/esbuild-graphql-loader]
+- [unplugin]
+
+[@luckycatfactory/esbuild-graphql-loader]: https://github.com/luckycatfactory/esbuild-graphql-loader
+[unplugin]: https://github.com/unjs/unplugin
