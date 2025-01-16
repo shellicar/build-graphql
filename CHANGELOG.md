@@ -1,13 +1,20 @@
 # Changelog
 
+## [1.0.1] - 2025-01-16
+
+### Fixed
+
+- Export types explicitly
+- Fix logging prefix
+
 ## [1.0.0] - 2025-01-09
 
-## Changed
+### Changed
 
 - Force plugin to run in `pre` mode
 - Refactor and simplify plugin code
 
-## Structure
+### Structure
 
 - Use `packages` and `examples` monorepo structure
 
@@ -21,6 +28,7 @@ Fix missing README
 
 Initial release.
 
+[1.0.1]: https://github.com/shellicar/build-graphql/releases/tag/1.0.1
 [1.0.0]: https://github.com/shellicar/build-graphql/releases/tag/1.0.0
 [0.1.1]: https://github.com/shellicar/build-graphql/releases/tag/0.1.1
 [0.1.0]: https://github.com/shellicar/build-graphql/releases/tag/0.1.0

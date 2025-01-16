@@ -11,6 +11,7 @@ export default defineConfig({
   treeshake: true,
   outDir: 'dist',
   minify: 'terser',
+  removeNodeProtocol: false,
   sourcemap: true,
   keepNames: true,
   splitting: true,

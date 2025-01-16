@@ -1,3 +1,4 @@
+import { inspect } from 'node:util';
 import { glob } from 'glob';
 import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
@@ -13,8 +14,18 @@ const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions) => {
     ...defaults,
     ...inputOptions,
   };
-  const debug = options.debug ? (message?: unknown, ...optionalParams: unknown[]) => console.debug(`[version] ${message}`, ...optionalParams) : () => {};
-  const error = (message?: unknown, ...optionalParams: unknown[]) => console.error(`[version] ${message}`, ...optionalParams);
+  const debug = options.debug
+    ? (message: unknown, ...optionalParams: unknown[]) => {
+        const formattedMessage = typeof message === 'object' ? inspect(message, { depth: null, colors: true }) : message;
+        console.debug('[graphql]', formattedMessage, ...optionalParams);
+      }
+    : () => {};
+
+  const error = (message: unknown, ...optionalParams: unknown[]) => {
+    const formattedMessage = typeof message === 'object' ? inspect(message, { depth: null, colors: true }) : message;
+    console.error('[graphql]', formattedMessage, ...optionalParams);
+  };
+
   const logger: ILogger = {
     debug,
     error,
