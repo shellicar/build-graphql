@@ -24,7 +24,8 @@ export interface Options {
   mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
 }
 
+export type LogLevel = 'debug' | 'error';
+
 export type ILogger = {
-  debug: (typeof console)['debug'];
-  error: (typeof console)['error'];
+  [key in LogLevel]: (typeof console)[key];
 };
