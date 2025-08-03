@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0] - 2025-08-03
+
+### Changed
+
+- Updated all dependencies to latest versions
+
 ## [1.0.1] - 2025-01-16
 
 ### Fixed
@@ -28,6 +34,7 @@ Fix missing README
 
 Initial release.
 
+[1.1.0]: https://github.com/shellicar/build-graphql/releases/tag/1.1.0
 [1.0.1]: https://github.com/shellicar/build-graphql/releases/tag/1.0.1
 [1.0.0]: https://github.com/shellicar/build-graphql/releases/tag/1.0.0
 [0.1.1]: https://github.com/shellicar/build-graphql/releases/tag/0.1.1
