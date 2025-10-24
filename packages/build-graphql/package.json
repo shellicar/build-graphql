@@ -219,23 +219,23 @@
   },
   "devDependencies": {
     "@luckycatfactory/esbuild-graphql-loader": "^3.8.1",
-    "@nuxt/kit": "^4.0.3",
-    "@nuxt/schema": "^4.0.3",
-    "@shellicar/build-clean": "1.0.0-preview.5",
+    "@nuxt/kit": "^4.1.3",
+    "@nuxt/schema": "^4.1.3",
+    "@shellicar/build-clean": "1.1.2",
     "@tsconfig/node20": "^20.1.6",
-    "@types/node": "^24.3.0",
-    "npm-check-updates": "^18.0.2",
+    "@types/node": "^24.9.1",
+    "npm-check-updates": "^19.1.1",
     "npm-run-all2": "^8.0.4",
-    "rollup": "^4.48.0",
-    "terser": "^5.43.1",
+    "rollup": "^4.52.5",
+    "terser": "^5.44.0",
     "tsup": "^8.5.0",
-    "vite": "^7.1.11",
-    "vitest": "^3.2.4",
-    "webpack": "^5.101.3"
+    "vite": "^7.1.12",
+    "vitest": "^4.0.2",
+    "webpack": "^5.102.1"
   },
   "dependencies": {
     "glob": "^11.0.3",
     "graphql": "^16.11.0",
-    "unplugin": "^2.3.8"
+    "unplugin": "^2.3.10"
   }
 }

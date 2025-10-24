@@ -1,3 +1,3 @@
 import { plugin } from './core';
 
-export default plugin.rspack;
+export default plugin.rolldown;
