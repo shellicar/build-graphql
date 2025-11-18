@@ -234,7 +234,7 @@
     "webpack": "^5.102.1"
   },
   "dependencies": {
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "graphql": "^16.11.0",
     "unplugin": "^2.3.10"
   }
