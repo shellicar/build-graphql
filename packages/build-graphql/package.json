@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-graphql",
   "private": false,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "license": "MIT",
   "author": "Stephen Hellicar",
@@ -125,6 +125,16 @@
         "default": "./dist/esm/types.js"
       }
     },
+    "./graphql": {
+      "require": {
+        "types": "./dist/cjs/core/graphql.d.cts",
+        "default": "./dist/cjs/core/graphql.cjs"
+      },
+      "import": {
+        "types": "./dist/esm/core/graphql.d.ts",
+        "default": "./dist/esm/core/graphql.js"
+      }
+    },
     "./typedefs": {
       "require": {
         "types": "./dist/cjs/core/typedefs.d.cts",
@@ -219,23 +229,23 @@
   },
   "devDependencies": {
     "@luckycatfactory/esbuild-graphql-loader": "^3.8.1",
-    "@nuxt/kit": "^4.1.3",
-    "@nuxt/schema": "^4.1.3",
+    "@nuxt/kit": "^4.2.2",
+    "@nuxt/schema": "^4.2.2",
     "@shellicar/build-clean": "1.1.2",
-    "@tsconfig/node20": "^20.1.6",
-    "@types/node": "^24.9.1",
-    "npm-check-updates": "^19.1.1",
+    "@tsconfig/node20": "^20.1.8",
+    "@types/node": "^25.0.3",
+    "npm-check-updates": "^19.2.0",
     "npm-run-all2": "^8.0.4",
-    "rollup": "^4.52.5",
-    "terser": "^5.44.0",
-    "tsup": "^8.5.0",
-    "vite": "^7.1.12",
-    "vitest": "^4.0.2",
-    "webpack": "^5.102.1"
+    "rollup": "^4.54.0",
+    "terser": "^5.44.1",
+    "tsup": "^8.5.1",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16",
+    "webpack": "^5.104.1"
   },
   "dependencies": {
-    "glob": "^11.0.3",
-    "graphql": "^16.11.0",
-    "unplugin": "^2.3.10"
+    "glob": "^13.0.0",
+    "graphql": "^16.12.0",
+    "unplugin": "^2.3.11"
   }
 }
