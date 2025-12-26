@@ -3,7 +3,8 @@ import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
 import { createLogger } from './createLogger';
 import { defaults } from './defaults';
-import { loadGraphqlModule, loadVirtualModule } from './graphql';
+import { loadGraphqlModule } from './graphql/loadGraphqlModule';
+import { loadVirtualModule } from './graphql/loadVirtualModule';
 import { virtualModuleId } from './module';
 import type { Options } from './types';
 
