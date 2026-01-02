@@ -1,4 +1,5 @@
 import type { DocumentNode } from 'graphql';
+import type { IgnoreLike } from 'glob';
 
 export interface Options {
   /**
@@ -8,7 +9,7 @@ export interface Options {
   /**
    * Glob ignore pattern for graphql files
    */
-  globIgnore?: string;
+  globIgnore?: string | string[] | IgnoreLike;
   /**
    * Ignores errors, otherwise errors will be thrown if graphql files are not found/imported and the typedefs file is not found
    */
