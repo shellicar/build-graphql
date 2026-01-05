@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-graphql",
   "private": false,
-  "version": "1.2.2",
+  "version": "1.2.3-preview.1",
   "type": "module",
   "license": "MIT",
   "author": "Stephen Hellicar",

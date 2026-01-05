@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.3] - 2025-05-01
+
+### Changed
+
+- Adds support for `IgnoreLike` and `string[]` on `globIgnore` option, in addition to `string`.
+
 ## [1.2.2] - 2025-12-26
 
 ### Changed
@@ -52,6 +58,7 @@ Fix missing README
 
 Initial release.
 
+[1.2.3]: https://github.com/shellicar/build-graphql/releases/tag/1.2.3
 [1.2.2]: https://github.com/shellicar/build-graphql/releases/tag/1.2.2
 [1.2.1]: https://github.com/shellicar/build-graphql/releases/tag/1.2.1
 [1.2.0]: https://github.com/shellicar/build-graphql/releases/tag/1.2.0
