@@ -1,11 +1,15 @@
+import type { GlobOptions, glob } from 'glob';
 import type { DocumentNode } from 'graphql';
-import type { IgnoreLike } from 'glob';
 
+export type GlobPattern = Parameters<typeof glob>[0]; // string | string[]
+export type GlobIgnore = NonNullable<GlobOptions['ignore']>; // string | string[] | IgnoreLike
+
+// TODO(shellicar): Add ability to pass through all glob options
 export interface Options {
   /**
    * Glob pattern to search for graphql files
    */
-  globPattern?: string;
+  globPattern?: GlobPattern;
   /**
    * Glob ignore pattern for graphql files
    */
@@ -25,7 +29,7 @@ export interface Options {
   mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
 }
 
-export type GlobIgnore = IgnoreLike | string[] | string;
+export type FindOptions = Required<Pick<Options, 'globPattern' | 'globIgnore'>>;
 
 export type LogLevel = 'debug' | 'error';
 
