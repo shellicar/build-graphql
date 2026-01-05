@@ -9,7 +9,7 @@ export interface Options {
   /**
    * Glob ignore pattern for graphql files
    */
-  globIgnore?: string | string[] | IgnoreLike;
+  globIgnore?: GlobIgnore;
   /**
    * Ignores errors, otherwise errors will be thrown if graphql files are not found/imported and the typedefs file is not found
    */
@@ -24,6 +24,8 @@ export interface Options {
    */
   mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
 }
+
+export type GlobIgnore = IgnoreLike | string[] | string;
 
 export type LogLevel = 'debug' | 'error';
 
