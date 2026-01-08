@@ -62,7 +62,7 @@ describe('glob ignore', () => {
     verifyFiles(output, expectedFiles, excludedFiles);
   });
 
-  it('can use glob.ignore syntax', async () => {
+  it('can use globOptions.ignore syntax', async () => {
     const output = await buildWithOptions(
       {
         globPattern: 'test/**/*.graphql',
@@ -78,7 +78,7 @@ describe('glob ignore', () => {
     verifyFiles(output, expectedFiles, excludedFiles);
   });
 
-  it('glob.ignore overrides globIgnore', async () => {
+  it('globOptions.ignore overrides globIgnore', async () => {
     const output = await buildWithOptions(
       {
         globPattern: 'test/**/*.graphql',
