@@ -22,15 +22,34 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
       "suspicious": {
-        "noExplicitAny": "info"
+        "noExplicitAny": "info",
+        "noConsole": "error",
+        "noDebugger": "error"
       },
       "style": {
         "useBlockStatements": "error",
-        "noNonNullAssertion": "warn"
+        "noNonNullAssertion": "warn",
+        "useConst": "error"
       }
     }
   },
+  "overrides": [
+    {
+      "includes": ["examples/**", "**/test/**", "**/createLogger.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    }
+  ],
   "graphql": {
     "formatter": {
       "enabled": true

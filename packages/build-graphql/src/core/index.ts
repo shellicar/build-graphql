@@ -1,18 +1,26 @@
-import { glob } from 'glob';
 import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
 import { createLogger } from './createLogger';
 import { defaults } from './defaults';
+import { findFiles } from './findFiles';
 import { loadGraphqlModule } from './graphql/loadGraphqlModule';
 import { loadVirtualModule } from './graphql/loadVirtualModule';
 import { virtualModuleId } from './module';
-import type { Options } from './types';
+import type { FindOptions, Options } from './types';
 
 const resolveVirtualId = (id: string) => `\0${id}`;
 
 const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions) => {
   const options = { ...defaults, ...inputOptions };
   const logger = createLogger(options);
+
+  const findOptions = {
+    pattern: options.globPattern,
+    options: {
+      ignore: options.globIgnore,
+      ...options.globOptions,
+    },
+  } satisfies FindOptions;
 
   let graphqlMatched: string[] = [];
   const graphqlImports: string[] = [];
@@ -25,7 +33,7 @@ const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions) => {
     enforce: 'pre',
 
     async buildStart() {
-      graphqlMatched = await glob(options.globPattern, { ignore: options.globIgnore });
+      graphqlMatched = await findFiles(findOptions);
       logger.debug('Matched GraphQL files:', graphqlMatched);
     },
 
@@ -38,7 +46,7 @@ const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions) => {
     async load(id) {
       if (id === resolveVirtualId(virtualModuleId)) {
         importedTypedefs = true;
-        return await loadVirtualModule(options, logger);
+        return await loadVirtualModule(findOptions, logger);
       }
 
       const result = await loadGraphqlModule(id, options, logger);

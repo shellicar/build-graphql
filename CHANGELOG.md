@@ -1,10 +1,18 @@
 # Changelog
 
-## [1.2.3] - 2025-05-01
+## [1.3.0] - 2026-01-05
+
+### Added
+
+- Added `globOptions` to support passing all glob options directly when finding GraphQL files
 
 ### Changed
 
 - Adds support for `IgnoreLike` and `string[]` on `globIgnore` option, in addition to `string`.
+
+### Deprecated
+
+- `globIgnore` is now deprecated in favor of using `globOptions.ignore`
 
 ## [1.2.2] - 2025-12-26
 
@@ -58,7 +66,7 @@ Fix missing README
 
 Initial release.
 
-[1.2.3]: https://github.com/shellicar/build-graphql/releases/tag/1.2.3
+[1.3.0]: https://github.com/shellicar/build-graphql/releases/tag/1.3.0
 [1.2.2]: https://github.com/shellicar/build-graphql/releases/tag/1.2.2
 [1.2.1]: https://github.com/shellicar/build-graphql/releases/tag/1.2.1
 [1.2.0]: https://github.com/shellicar/build-graphql/releases/tag/1.2.0
