@@ -1,4 +1,4 @@
-import type { GlobOptions, glob } from 'glob';
+import type { GlobOptions, GlobOptionsWithFileTypesUnset, glob } from 'glob';
 import type { DocumentNode } from 'graphql';
 
 export type GlobPattern = Parameters<typeof glob>[0]; // string | string[]
@@ -12,8 +12,15 @@ export interface Options {
   globPattern?: GlobPattern;
   /**
    * Glob ignore pattern for graphql files
+   * @deprecated Use `globOptions.ignore` instead
    */
   globIgnore?: GlobIgnore;
+
+  /**
+   * Glob options to pass to the glob library
+   */
+  globOptions?: GlobOptionsWithFileTypesUnset;
+
   /**
    * Ignores errors, otherwise errors will be thrown if graphql files are not found/imported and the typedefs file is not found
    */
@@ -29,7 +36,10 @@ export interface Options {
   mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
 }
 
-export type FindOptions = Required<Pick<Options, 'globPattern' | 'globIgnore'>>;
+export type FindOptions = {
+  pattern: GlobPattern;
+  options: GlobOptionsWithFileTypesUnset;
+};
 
 export type LogLevel = 'debug' | 'error';
 
