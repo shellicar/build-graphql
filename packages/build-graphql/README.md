@@ -47,4 +47,4 @@ import typedefs from '@shellicar/build-graphql/typedefs'
 
 ## Documentation
 
-For full documentation, visit [here](https://github.com/shellicar/build-graphql).
+For full documentation, visit [the GitHub repository](https://github.com/shellicar/build-graphql).
