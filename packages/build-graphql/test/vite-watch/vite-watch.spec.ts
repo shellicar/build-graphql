@@ -139,8 +139,9 @@ describe('unplugin-graphql vite watch/hmr features', () => {
 
         const { plugin } = makeViteRun(features);
         const actual = plugin.handleHotUpdate;
+        const actualType = 'function';
 
-        expect(actual).toBeTypeOf('function');
+        expect(actual).toBeTypeOf(actualType);
       });
 
       it('[ViteWatch=ON][ViteHmr=ON] typedefs load registers all matched GraphQL files for watching', async () => {
