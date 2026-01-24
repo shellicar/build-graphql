@@ -1,5 +1,8 @@
 import type { Feature } from '../enums';
 
+/**
+ * Error thrown if incompatible features are configured.
+ */
 export class InvalidFeatureCombinationError extends Error {
   public constructor(
     public readonly feature: Feature,
