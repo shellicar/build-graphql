@@ -3,6 +3,7 @@ import { GraphQLLoadNoFilesError } from './../errors/GraphQLLoadNoFilesError';
 import { GraphQLLoadPartialImportError } from './../errors/GraphQLLoadPartialImportError';
 import { GraphQLLoadTypedefsMissingError } from './../errors/GraphQLLoadTypedefsMissingError';
 import type { GlobPattern, ILogger } from '../types';
+import { virtualModuleId } from './module';
 
 interface HandleErrorsOptions {
   graphqlMatched: number;
@@ -14,7 +15,7 @@ interface HandleErrorsOptions {
 const errorText = {
   NO_FILES_MATCHED: 'No GraphQL files found for the pattern',
   PARTIAL_IMPORT: 'Some GraphQL files were not imported',
-  TYPEDEFS_MISSING: 'Typedefs not imported. Make sure to import from @shellicar/build-graphql/typedefs',
+  TYPEDEFS_MISSING: `Typedefs not imported. Make sure to import from ${virtualModuleId}`,
 };
 
 export function handleErrors(errorPolicy: ErrorPolicy, logger: ILogger, { graphqlMatched, graphqlImports, importedTypedefs, globPattern }: HandleErrorsOptions) {
