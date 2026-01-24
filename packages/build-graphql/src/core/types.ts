@@ -10,5 +10,3 @@ type MakeRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 export type ResolvedOptions = MakeRequired<Options, RequiredOptions> & {
   features: FullFeatures;
 };
-
-export type FindOptions = Pick<ResolvedOptions, 'globPattern' | 'globOptions' | 'compareFn'>;

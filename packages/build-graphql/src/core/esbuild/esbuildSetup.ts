@@ -3,9 +3,9 @@ import type { PluginBuild } from 'esbuild';
 import type { ILogger } from '../..';
 import { findFiles } from '../findFiles';
 import { virtualModuleId } from '../module';
-import type { FindOptions } from '../types';
+import type { ResolvedOptions } from '../types';
 
-export const esbuildSetup = (build: PluginBuild, findOptions: FindOptions, logger: ILogger) => {
+export const esbuildSetup = (build: PluginBuild, options: ResolvedOptions, logger: ILogger) => {
   build.onLoad({ filter: /\.[cm]?ts?$/, namespace: 'file' }, async (args) => {
     const contents = await fs.readFile(args.path, 'utf8');
 
@@ -14,7 +14,7 @@ export const esbuildSetup = (build: PluginBuild, findOptions: FindOptions, logge
       return;
     }
 
-    const graphqlFiles = await findFiles(findOptions);
+    const graphqlFiles = await findFiles(options);
 
     logger.debug('[esbuild] typedefs importer watch', {
       importer: args.path,

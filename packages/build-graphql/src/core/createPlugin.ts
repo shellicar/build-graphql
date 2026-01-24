@@ -6,9 +6,14 @@ import { loadVirtualModule } from './graphql/loadVirtualModule';
 import { handleErrors } from './handleErrors';
 import { virtualModuleId } from './module';
 import { resolveVirtualId } from './resolveVirtualId';
-import type { FindOptions, ResolvedOptions } from './types';
+import type { ResolvedOptions } from './types';
 
-export const createPlugin = (esbuild: UnpluginOptions['esbuild'], vite: UnpluginOptions['vite'], options: ResolvedOptions, findOptions: FindOptions, logger: ILogger): UnpluginOptions => {
+type Features = {
+  esbuild: UnpluginOptions['esbuild'];
+  vite: UnpluginOptions['vite'];
+};
+
+export const createPlugin = (features: Features, options: ResolvedOptions, logger: ILogger): UnpluginOptions => {
   let importedTypedefs = false;
   const graphqlImports: string[] = [];
   let graphqlMatched: string[] = [];
@@ -17,13 +22,12 @@ export const createPlugin = (esbuild: UnpluginOptions['esbuild'], vite: Unplugin
     name: 'unplugin-graphql',
     enforce: 'pre',
 
-    esbuild: esbuild,
-    vite,
+    ...features,
 
     async buildStart() {
       importedTypedefs = false;
       graphqlImports.length = 0;
-      graphqlMatched = await findFiles(findOptions);
+      graphqlMatched = await findFiles(options);
       logger.debug('Matched GraphQL files:', graphqlMatched);
     },
 
@@ -38,13 +42,13 @@ export const createPlugin = (esbuild: UnpluginOptions['esbuild'], vite: Unplugin
         importedTypedefs = true;
 
         if (options.features.VITE_WATCH) {
-          const files = await findFiles(findOptions);
+          const files = await findFiles(options);
           for (const f of files) {
             this.addWatchFile(f);
           }
         }
 
-        return await loadVirtualModule(findOptions, logger);
+        return await loadVirtualModule(options, logger);
       }
 
       const result = await loadGraphqlModule(id, options);
