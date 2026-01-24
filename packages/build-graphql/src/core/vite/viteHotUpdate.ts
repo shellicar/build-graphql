@@ -1,6 +1,8 @@
-import type { ModuleGraph } from 'vite';
+import type { ViteDevServer } from 'vite';
 import { virtualModuleId } from '../module';
 import { resolveVirtualId } from '../resolveVirtualId';
+
+type ModuleGraph = Pick<ViteDevServer, 'moduleGraph'>['moduleGraph'];
 
 type DevServerDependency = {
   moduleGraph: Pick<ModuleGraph, 'getModuleById' | 'invalidateModule'>;
