@@ -17,12 +17,15 @@ export const makeViteRun = (features: Features) => {
   }) as Plugin;
 
   const ctx = {
-    addWatchFile: vi.fn(),
     cache: {} as PluginContext['cache'],
+    fs: {} as PluginContext['fs'],
+    meta: {} as PluginContext['meta'],
+    environment: {} as PluginContext['environment'],
+
+    addWatchFile: vi.fn(),
     debug: vi.fn(),
     emitFile: vi.fn(),
     error: vi.fn<PluginContext['error']>(),
-    fs: {} as PluginContext['fs'],
     getFileName: vi.fn(),
     getModuleIds: vi.fn(),
     getModuleInfo: vi.fn(),
@@ -33,8 +36,6 @@ export const makeViteRun = (features: Features) => {
     resolve: vi.fn(),
     setAssetSource: vi.fn(),
     warn: vi.fn(),
-    meta: {} as PluginContext['meta'],
-    environment: {} as PluginContext['environment'],
   };
 
   const module = resolveVirtualId(virtualModuleId);
