@@ -1,5 +1,5 @@
 {
-  "name": "@shellicar/build-graphql-playground",
+  "name": "@shellicar/build-graphql-examples-vite",
   "private": true,
   "type": "module",
   "scripts": {
