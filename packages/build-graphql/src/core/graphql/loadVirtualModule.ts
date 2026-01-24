@@ -1,5 +1,5 @@
 import type { ILogger } from '../../types';
-import type { FindOptions } from '../internal/types';
+import type { FindOptions } from '../types';
 import { findGraphQLFiles } from './findGraphQLFiles';
 import { generateTypedefsFile } from './generateTypedefsFile';
 import type { TransformResult } from './types';

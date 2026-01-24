@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
 import type { PluginBuild } from 'esbuild';
-import type { ILogger } from '../types';
-import { findFiles } from './findFiles';
-import type { FindOptions } from './internal/types';
-import { virtualModuleId } from './module';
+import type { ILogger } from '../..';
+import { findFiles } from '../findFiles';
+import { virtualModuleId } from '../module';
+import type { FindOptions } from '../types';
 
 export const esbuildSetup = (build: PluginBuild, findOptions: FindOptions, logger: ILogger) => {
   build.onLoad({ filter: /\.[cm]?ts?$/, namespace: 'file' }, async (args) => {

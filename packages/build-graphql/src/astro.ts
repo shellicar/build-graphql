@@ -1,4 +1,4 @@
-import { plugin } from './core';
+import { plugin } from './core/plugin';
 import type { Options } from './types';
 
 export default (options: Options): any => ({

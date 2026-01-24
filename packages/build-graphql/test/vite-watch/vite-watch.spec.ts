@@ -1,10 +1,10 @@
 import type { ModuleNode } from 'vite';
 import { describe, expect, it, vi } from 'vitest';
 import { Feature } from '../../src';
-import { InvalidFeatureCombinationError } from '../../src/core/InvalidFeatureCombinationError';
 import { virtualModuleId } from '../../src/core/module';
 import { resolveVirtualId } from '../../src/core/resolveVirtualId';
-import { handleHotUpdate } from '../../src/core/viteHotUpdate';
+import { handleHotUpdate } from '../../src/core/vite/viteHotUpdate';
+import { InvalidFeatureCombinationError } from '../../src/errors/InvalidFeatureCombinationError';
 import { expectToThrowErrorWithFields } from './expectToThrowErrorWithFields';
 import { makeViteRun } from './makeViteRun';
 
@@ -54,9 +54,9 @@ describe('unplugin-graphql vite watch/hmr features', () => {
 
         await runBuild();
         const actual = ctx.addWatchFile;
-        const expected = 0;
+        const expectedCalls = 0;
 
-        expect(actual).toBeCalledTimes(expected);
+        expect(actual).toBeCalledTimes(expectedCalls);
       });
     });
 
@@ -165,16 +165,16 @@ describe('unplugin-graphql vite watch/hmr features', () => {
 
           it('does not interact with the module graph', () => {
             const actual = server.moduleGraph.getModuleById;
-            const expected = 0;
+            const expectedCalls = 0;
 
-            expect(actual).toHaveBeenCalledTimes(expected);
+            expect(actual).toHaveBeenCalledTimes(expectedCalls);
           });
 
           it('does not invalidate any modules', () => {
             const actual = server.moduleGraph.invalidateModule;
-            const expected = 0;
+            const expectedCalls = 0;
 
-            expect(actual).toHaveBeenCalledTimes(expected);
+            expect(actual).toHaveBeenCalledTimes(expectedCalls);
           });
 
           it('produces no hot-update result', () => {
@@ -245,9 +245,9 @@ describe('unplugin-graphql vite watch/hmr features', () => {
 
           it('does not invalidate anything', () => {
             const actual = server.moduleGraph.invalidateModule;
-            const expected = 0;
+            const expectedCalls = 0;
 
-            expect(actual).toHaveBeenCalledTimes(expected);
+            expect(actual).toHaveBeenCalledTimes(expectedCalls);
           });
 
           it('does not request any module reloads', () => {

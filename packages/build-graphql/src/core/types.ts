@@ -1,6 +1,6 @@
 import type { GlobOptionsWithFileTypesUnset } from 'glob';
-import type { Feature } from '../../enums';
-import type { GlobPattern, Options } from '../../types';
+import type { Feature } from '../enums';
+import type { GlobPattern, Options } from '../types';
 
 type FullFeatures = Record<Feature, boolean>;
 

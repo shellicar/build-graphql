@@ -12,10 +12,33 @@ describe('unplugin-graphql esbuild watch feature', () => {
 
         const build = runEsbuildSetup(options);
 
-        expect(build.onLoad).not.toHaveBeenCalled();
+        const actual = build.onLoad;
+        const expectedCalls = 0;
+
+        expect(actual).toHaveBeenCalledTimes(expectedCalls);
       });
 
-      it('does not return watchFiles from the esbuild onLoad path', () => {});
+      it('esbuildSetup/onLoad does not return watchFiles', async () => {
+        const options: Options = {
+          features: { [Feature.EsbuildWatch]: true },
+        };
+
+        const build = runEsbuildSetup(options);
+
+        const onLoadCallback = build.onLoad.mock.calls[0][1];
+
+        const result = await onLoadCallback({
+          path: 'test/no-typedefs-entry.ts',
+          namespace: 'file',
+          suffix: '',
+          pluginData: {},
+          with: {},
+        });
+        const actual = result?.watchFiles;
+        const expected = undefined;
+
+        expect(actual).toBe(expected);
+      });
     });
 
     describe('feature flag ON', () => {
@@ -26,7 +49,10 @@ describe('unplugin-graphql esbuild watch feature', () => {
 
         const build = runEsbuildSetup(options);
 
-        expect(build.onLoad).toHaveBeenCalled();
+        const actual = build.onLoad;
+        const expectedCalls = 1;
+
+        expect(actual).toHaveBeenCalledTimes(expectedCalls);
       });
 
       it('esbuildSetup/onLoad returns watchFiles for matched GraphQL files', async () => {
@@ -46,7 +72,10 @@ describe('unplugin-graphql esbuild watch feature', () => {
           with: {},
         });
 
-        expect(result?.watchFiles).toEqual(['test/mutation.graphql', 'test/query.graphql', 'test/schema.spec.graphql', 'test/sub/schema.graphql']);
+        const actual = result?.watchFiles;
+        const expected = ['test/mutation.graphql', 'test/query.graphql', 'test/schema.spec.graphql', 'test/sub/schema.graphql'];
+
+        expect(actual).toEqual(expected);
       });
     });
   });
@@ -60,21 +89,10 @@ describe('unplugin-graphql esbuild watch feature', () => {
 
         const build = runEsbuildSetup(options);
 
-        expect(build.onLoad).not.toHaveBeenCalled();
-      });
+        const actual = build.onLoad;
+        const expectedCalls = 0;
 
-      it('does not return watchFiles from the esbuild onLoad path');
-    });
-
-    describe('feature flag ON', () => {
-      it('exposes an esbuild.setup hook', () => {
-        const options: Options = {
-          features: { [Feature.EsbuildWatch]: true },
-        };
-
-        const build = runEsbuildSetup(options);
-
-        expect(build.onLoad).toHaveBeenCalled();
+        expect(actual).toHaveBeenCalledTimes(expectedCalls);
       });
 
       it('esbuildSetup/onLoad does not return watchFiles', async () => {
@@ -93,9 +111,46 @@ describe('unplugin-graphql esbuild watch feature', () => {
           pluginData: {},
           with: {},
         });
-        console.log('result', result);
+        const actual = result?.watchFiles;
+        const expected = undefined;
 
-        expect(result?.watchFiles).toBeUndefined();
+        expect(actual).toBe(expected);
+      });
+    });
+
+    describe('feature flag ON', () => {
+      it('exposes an esbuild.setup hook', () => {
+        const options: Options = {
+          features: { [Feature.EsbuildWatch]: true },
+        };
+
+        const build = runEsbuildSetup(options);
+        const actual = build.onLoad;
+        const expectedCalls = 1;
+
+        expect(actual).toHaveBeenCalledTimes(expectedCalls);
+      });
+
+      it('esbuildSetup/onLoad does not return watchFiles', async () => {
+        const options: Options = {
+          features: { [Feature.EsbuildWatch]: true },
+        };
+
+        const build = runEsbuildSetup(options);
+
+        const onLoadCallback = build.onLoad.mock.calls[0][1];
+
+        const result = await onLoadCallback({
+          path: 'test/no-typedefs-entry.ts',
+          namespace: 'file',
+          suffix: '',
+          pluginData: {},
+          with: {},
+        });
+        const actual = result?.watchFiles;
+        const expected = undefined;
+
+        expect(actual).toBe(expected);
       });
     });
   });

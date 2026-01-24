@@ -1,6 +1,6 @@
 import path from 'path';
 import { findFiles } from '../findFiles';
-import type { FindOptions } from '../internal/types';
+import type { FindOptions } from '../types';
 import type { GraphqlFile } from './types';
 
 export const findGraphQLFiles = async (options: FindOptions): Promise<GraphqlFile[]> => {
