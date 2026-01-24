@@ -3,8 +3,8 @@ import { createUnplugin } from 'unplugin';
 import type { Plugin } from 'vite';
 import { vi } from 'vitest';
 import { ErrorPolicy, type Features } from '../../src';
+import { virtualModuleId } from '../../src/core/consts';
 import { graphqlPluginFactory } from '../../src/core/graphqlPluginFactory';
-import { virtualModuleId } from '../../src/core/module';
 import { resolveVirtualId } from '../../src/core/resolveVirtualId';
 import { getHandler } from './getHandler';
 

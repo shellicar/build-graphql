@@ -1,10 +1,10 @@
 import type { UnpluginOptions } from 'unplugin';
 import type { ILogger } from '../types';
+import { pluginName, virtualModuleId } from './consts';
 import { findFiles } from './findFiles';
 import { loadGraphqlModule } from './graphql/loadGraphqlModule';
 import { loadVirtualModule } from './graphql/loadVirtualModule';
 import { handleErrors } from './handleErrors';
-import { virtualModuleId } from './module';
 import { resolveVirtualId } from './resolveVirtualId';
 import type { ResolvedOptions } from './types';
 
@@ -19,7 +19,7 @@ export const createPlugin = (features: Features, options: ResolvedOptions, logge
   let graphqlMatched: string[] = [];
 
   return {
-    name: 'unplugin-graphql',
+    name: pluginName,
     enforce: 'pre',
 
     ...features,

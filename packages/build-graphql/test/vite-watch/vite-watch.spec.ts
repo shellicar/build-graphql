@@ -1,7 +1,7 @@
 import type { ModuleNode } from 'vite';
 import { describe, expect, it, vi } from 'vitest';
 import { Feature } from '../../src';
-import { virtualModuleId } from '../../src/core/module';
+import { virtualModuleId } from '../../src/core/consts';
 import { resolveVirtualId } from '../../src/core/resolveVirtualId';
 import { handleHotUpdate } from '../../src/core/vite/viteHotUpdate';
 import { InvalidFeatureCombinationError } from '../../src/errors/InvalidFeatureCombinationError';
@@ -19,9 +19,9 @@ const makeServer = () => {
   };
 };
 
-describe('unplugin-graphql vite watch/hmr features', () => {
-  describe('Feature.ViteWatch OFF', () => {
-    describe('Feature.ViteHmr OFF', () => {
+describe('vite watch/hmr features', () => {
+  describe('ViteWatch OFF', () => {
+    describe('ViteHmr OFF', () => {
       it('[ViteWatch=OFF][ViteHmr=OFF] supports running without watch or HMR', () => {
         const features = {
           [Feature.ViteWatch]: false,
@@ -60,7 +60,7 @@ describe('unplugin-graphql vite watch/hmr features', () => {
       });
     });
 
-    describe('Feature.ViteHmr ON', () => {
+    describe('ViteHmr ON', () => {
       it('[ViteWatch=OFF][ViteHmr=ON] rejects invalid feature combination', () => {
         const features = {
           [Feature.ViteWatch]: false,
@@ -79,8 +79,8 @@ describe('unplugin-graphql vite watch/hmr features', () => {
     });
   });
 
-  describe('Feature.ViteWatch ON', () => {
-    describe('Feature.ViteHmr OFF', () => {
+  describe('ViteWatch ON', () => {
+    describe('ViteHmr OFF', () => {
       it('[ViteWatch=ON][ViteHmr=OFF] supports watch without HMR', () => {
         const features = {
           [Feature.ViteWatch]: true,
@@ -120,7 +120,7 @@ describe('unplugin-graphql vite watch/hmr features', () => {
       });
     });
 
-    describe('Feature.ViteHmr ON', () => {
+    describe('ViteHmr ON', () => {
       it('[ViteWatch=ON][ViteHmr=ON] supports watch with HMR', () => {
         const features = {
           [Feature.ViteWatch]: true,

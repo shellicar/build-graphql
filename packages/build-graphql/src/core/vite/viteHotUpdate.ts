@@ -1,5 +1,5 @@
 import type { ViteDevServer } from 'vite';
-import { virtualModuleId } from '../module';
+import { virtualModuleId } from '../consts';
 import { resolveVirtualId } from '../resolveVirtualId';
 
 type ModuleGraph = Pick<ViteDevServer, 'moduleGraph'>['moduleGraph'];

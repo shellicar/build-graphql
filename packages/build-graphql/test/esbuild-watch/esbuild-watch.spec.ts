@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { Feature, type Options } from '../../src';
 import { runEsbuildSetup } from './runEsbuildSetup';
 
-describe('unplugin-graphql esbuild watch feature', () => {
+describe('esbuild watch feature', () => {
   describe('source file imports virtual typedefs module', () => {
-    describe('feature flag OFF', () => {
+    describe('EsbuildWatch OFF', () => {
       it('does not expose an esbuild.setup hook', () => {
         const options: Options = {
           features: { [Feature.EsbuildWatch]: false },
@@ -41,7 +41,7 @@ describe('unplugin-graphql esbuild watch feature', () => {
       });
     });
 
-    describe('feature flag ON', () => {
+    describe('EsbuildWatch ON', () => {
       it('exposes an esbuild.setup hook', () => {
         const options: Options = {
           features: { [Feature.EsbuildWatch]: true },
@@ -81,7 +81,7 @@ describe('unplugin-graphql esbuild watch feature', () => {
   });
 
   describe('source file does NOT import virtual typedefs module', () => {
-    describe('feature flag OFF', () => {
+    describe('EsbuildWatch OFF', () => {
       it('does not expose an esbuild.setup hook', () => {
         const options: Options = {
           features: { [Feature.EsbuildWatch]: false },
@@ -118,7 +118,7 @@ describe('unplugin-graphql esbuild watch feature', () => {
       });
     });
 
-    describe('feature flag ON', () => {
+    describe('EsbuildWatch ON', () => {
       it('exposes an esbuild.setup hook', () => {
         const options: Options = {
           features: { [Feature.EsbuildWatch]: true },

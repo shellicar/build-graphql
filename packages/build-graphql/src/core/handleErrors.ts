@@ -3,7 +3,7 @@ import { GraphQLLoadNoFilesError } from './../errors/GraphQLLoadNoFilesError';
 import { GraphQLLoadPartialImportError } from './../errors/GraphQLLoadPartialImportError';
 import { GraphQLLoadTypedefsMissingError } from './../errors/GraphQLLoadTypedefsMissingError';
 import type { GlobPattern, ILogger } from '../types';
-import { virtualModuleId } from './module';
+import { virtualModuleId } from './consts';
 
 interface HandleErrorsOptions {
   graphqlMatched: number;
