@@ -4,8 +4,8 @@
   "type": "module",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsx build.mts",
-    "dev": "tsx build.mts --watch",
+    "build": "tsx build.ts",
+    "dev": "tsx build.ts --watch",
     "start": "node .",
     "type-check": "tsc -p tsconfig.check.json"
   },
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@shellicar/build-graphql": "workspace:^",
     "@tsconfig/node20": "^20.1.8",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.10",
     "esbuild": "^0.27.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"

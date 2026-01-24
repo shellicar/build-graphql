@@ -1,5 +1,5 @@
 import { plugin } from './core';
-import type { Options } from './core/types';
+import type { Options } from './types';
 
 export default (options: Options): any => ({
   name: 'build-graphql',
