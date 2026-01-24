@@ -34,7 +34,13 @@
       "style": {
         "useBlockStatements": "error",
         "noNonNullAssertion": "warn",
-        "useConst": "error"
+        "useConst": "error",
+        "useConsistentMemberAccessibility": {
+          "level": "error",
+          "options": {
+            "accessibility": "explicit"
+          }
+        }
       }
     }
   },

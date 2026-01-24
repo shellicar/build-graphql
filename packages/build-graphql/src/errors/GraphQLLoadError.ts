@@ -1,7 +1,7 @@
-export class GraphQLLoadError extends Error {
-  kind: string;
+export abstract class GraphQLLoadError extends Error {
+  public readonly kind: string;
 
-  constructor(kind: string) {
+  protected constructor(kind: string) {
     super();
     this.kind = kind;
   }

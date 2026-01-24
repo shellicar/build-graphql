@@ -1,7 +1,7 @@
 import type { Feature } from '../enums';
 
 export class InvalidFeatureCombinationError extends Error {
-  constructor(
+  public constructor(
     public readonly feature: Feature,
     public readonly requires: Feature,
   ) {
