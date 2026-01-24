@@ -1,10 +1,9 @@
-import type { GlobOptionsWithFileTypesUnset } from 'glob';
 import type { Feature } from '../enums';
-import type { GlobPattern, Options } from '../types';
+import type { Options } from '../types';
 
 type FullFeatures = Record<Feature, boolean>;
 
-type RequiredOptions = 'globPattern' | 'globIgnore' | 'globOptions' | 'errorPolicy' | 'debug' | 'features';
+type RequiredOptions = 'globPattern' | 'globIgnore' | 'globOptions' | 'errorPolicy' | 'debug' | 'features' | 'compareFn';
 
 type MakeRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
@@ -12,7 +11,4 @@ export type ResolvedOptions = MakeRequired<Options, RequiredOptions> & {
   features: FullFeatures;
 };
 
-export type FindOptions = {
-  pattern: GlobPattern;
-  options: GlobOptionsWithFileTypesUnset;
-};
+export type FindOptions = Pick<ResolvedOptions, 'globPattern' | 'globOptions' | 'compareFn'>;

@@ -11,4 +11,5 @@ export const defaultOptions = {
     [Feature.ViteWatch]: true,
     [Feature.ViteHmr]: true,
   },
+  compareFn: (a: string, b: string) => a.localeCompare(b),
 } as const satisfies Options;

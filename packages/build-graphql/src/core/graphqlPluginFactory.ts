@@ -19,8 +19,9 @@ export const graphqlPluginFactory: UnpluginFactory<Options> = (inputOptions): Un
   const logger = createLogger(options);
 
   const findOptions = {
-    pattern: options.globPattern,
-    options: options.globOptions,
+    globPattern: options.globPattern,
+    globOptions: options.globOptions,
+    compareFn: options.compareFn,
   } satisfies FindOptions;
 
   logger.debug({ options });

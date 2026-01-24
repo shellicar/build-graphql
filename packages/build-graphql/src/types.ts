@@ -10,6 +10,13 @@ export interface Options {
    * Glob pattern to search for graphql files
    */
   globPattern?: GlobPattern;
+
+  /**
+   * Compare function for sorting files.
+   * @default localeCompare
+   */
+  compareFn?: (a: string, b: string) => number;
+
   /**
    * Glob ignore pattern for graphql files
    * @deprecated Use `globOptions.ignore` instead
