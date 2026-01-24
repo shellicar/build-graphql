@@ -1,8 +1,12 @@
-import type { ViteDevServer } from 'vite';
+import type { ModuleGraph } from 'vite';
 import { virtualModuleId } from './module';
 import { resolveVirtualId } from './resolveVirtualId';
 
-export const handleHotUpdate = async (ctx: { file: string; server: ViteDevServer }) => {
+type DevServerDependency = {
+  moduleGraph: Pick<ModuleGraph, 'getModuleById' | 'invalidateModule'>;
+};
+
+export const handleHotUpdate = async (ctx: { file: string; server: DevServerDependency }) => {
   const { file, server } = ctx;
   if (!file.endsWith('.graphql')) {
     return;
