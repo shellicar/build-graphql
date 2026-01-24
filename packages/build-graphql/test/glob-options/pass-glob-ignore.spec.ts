@@ -1,14 +1,14 @@
 import { build } from 'esbuild';
 import { describe, expect, it } from 'vitest';
-import graphqlPlugin from '../src/esbuild';
-import type { Options } from '../src/types';
+import graphqlPlugin from '../../src/esbuild';
+import type { Options } from '../../src/types';
 
 type TestFile = 'query.graphql' | 'mutation.graphql' | 'schema.spec.graphql' | 'sub/schema.graphql';
 
 describe('glob ignore', () => {
   const buildWithOptions = async (options: Options) => {
     const result = await build({
-      entryPoints: ['test/test-entry.ts'],
+      entryPoints: ['test/typedefs-entry.ts'],
       bundle: true,
       platform: 'node',
       plugins: [graphqlPlugin(options)],

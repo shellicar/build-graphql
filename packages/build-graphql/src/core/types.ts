@@ -1,48 +1,12 @@
-import type { GlobOptions, GlobOptionsWithFileTypesUnset, glob } from 'glob';
-import type { DocumentNode } from 'graphql';
+import type { Feature } from '../enums';
+import type { Options } from '../types';
 
-export type GlobPattern = Parameters<typeof glob>[0]; // string | string[]
-export type GlobIgnore = NonNullable<GlobOptions['ignore']>; // string | string[] | IgnoreLike
+type FullFeatures = Record<Feature, boolean>;
 
-// TODO(shellicar): Add ability to pass through all glob options
-export interface Options {
-  /**
-   * Glob pattern to search for graphql files
-   */
-  globPattern?: GlobPattern;
-  /**
-   * Glob ignore pattern for graphql files
-   * @deprecated Use `globOptions.ignore` instead
-   */
-  globIgnore?: GlobIgnore;
+type RequiredOptions = 'globPattern' | 'globIgnore' | 'globOptions' | 'errorPolicy' | 'debug' | 'features' | 'compareFn';
 
-  /**
-   * Glob options to pass to the glob library
-   */
-  globOptions?: GlobOptionsWithFileTypesUnset;
+type MakeRequired<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
-  /**
-   * Ignores errors, otherwise errors will be thrown if graphql files are not found/imported and the typedefs file is not found
-   */
-  ignoreErrors?: boolean;
-  /**
-   * Enable logging
-   */
-  debug?: boolean;
-
-  /**
-   * Custom function to map the document node
-   */
-  mapDocumentNode?: (documentNode: DocumentNode) => DocumentNode;
-}
-
-export type FindOptions = {
-  pattern: GlobPattern;
-  options: GlobOptionsWithFileTypesUnset;
-};
-
-export type LogLevel = 'debug' | 'error';
-
-export type ILogger = {
-  [key in LogLevel]: (typeof console)[key];
+export type ResolvedOptions = MakeRequired<Options, RequiredOptions> & {
+  features: FullFeatures;
 };

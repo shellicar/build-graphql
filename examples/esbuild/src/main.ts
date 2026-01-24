@@ -1,7 +1,4 @@
-import typedefs from '@shellicar/build-graphql/typedefs';
+import { inspect } from 'node:util';
+import { typedefs } from './typedefs';
 
-console.log(typedefs);
-
-for (const e of typedefs) {
-  console.log(e);
-}
+console.log(inspect(typedefs, { depth: Infinity }));

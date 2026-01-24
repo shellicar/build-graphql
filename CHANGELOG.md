@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.4.0] - 2026-01-24
+
+### Added
+
+- Added `features` option to enable/disable specific plugin features
+- Added esbuild watch mode feature for automatic rebuilds (enabled by default)
+- Added Vite watch mode and HMR (Hot Module Replacement) feature (enabled by default)
+- Added `errorPolicy` option to control how errors are handled during builds
+
+### Changed
+
+- Updated `unplugin` dependency from ^2.3.11 to ^3.0.0
+- Explicitly exported all public types that were previously only available as dependencies of other types
+
+### Deprecated
+
+- `ignoreErrors` option is now deprecated in favour of using `errorPolicy`
+
 ## [1.3.0] - 2026-01-05
 
 ### Added
@@ -66,6 +84,7 @@ Fix missing README
 
 Initial release.
 
+[1.4.0]: https://github.com/shellicar/build-graphql/releases/tag/1.4.0
 [1.3.0]: https://github.com/shellicar/build-graphql/releases/tag/1.3.0
 [1.2.2]: https://github.com/shellicar/build-graphql/releases/tag/1.2.2
 [1.2.1]: https://github.com/shellicar/build-graphql/releases/tag/1.2.1
