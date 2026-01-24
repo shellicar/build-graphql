@@ -27,20 +27,24 @@
         "noUnusedVariables": "error"
       },
       "suspicious": {
-        "noExplicitAny": "info",
+        "noExplicitAny": "warn",
         "noConsole": "error",
         "noDebugger": "error"
       },
       "style": {
+        "noInferrableTypes": "error",
+        "noNonNullAssertion": "error",
+        "noYodaExpression": "error",
         "useBlockStatements": "error",
-        "noNonNullAssertion": "warn",
-        "useConst": "error",
+        "noSubstr": "error",
+        "useNodejsImportProtocol": "error",
         "useConsistentMemberAccessibility": {
           "level": "error",
           "options": {
             "accessibility": "explicit"
           }
-        }
+        },
+        "useConst": "error"
       }
     }
   },
