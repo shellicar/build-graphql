@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-graphql",
   "private": false,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "license": "MIT",
   "author": "Stephen Hellicar",
@@ -230,23 +230,23 @@
   },
   "devDependencies": {
     "@luckycatfactory/esbuild-graphql-loader": "^3.8.1",
-    "@nuxt/kit": "^4.3.0",
-    "@nuxt/schema": "^4.3.0",
-    "@shellicar/build-clean": "1.1.2",
-    "@tsconfig/node20": "^20.1.8",
-    "@types/node": "^25.0.10",
+    "@nuxt/kit": "^4.3.1",
+    "@nuxt/schema": "^4.3.1",
+    "@shellicar/build-clean": "^1.2.2",
+    "@tsconfig/node20": "^20.1.9",
+    "@types/node": "^25.2.2",
     "graphql": "^16.12.0",
-    "npm-check-updates": "^19.3.1",
+    "npm-check-updates": "^19.3.2",
     "npm-run-all2": "^8.0.4",
-    "rollup": "^4.56.0",
+    "rollup": "^4.57.1",
     "terser": "^5.46.0",
     "tsup": "^8.5.1",
     "vite": "^7.3.1",
     "vitest": "^4.0.18",
-    "webpack": "^5.104.1"
+    "webpack": "^5.105.0"
   },
   "dependencies": {
-    "glob": "^13.0.0",
+    "glob": "^13.0.1",
     "unplugin": "^3.0.0"
   }
 }
