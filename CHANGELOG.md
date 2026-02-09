@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.4.1] - 2026-02-09
+
+### Security
+
+- Fixed [CVE-2026-25547](https://github.com/advisories/GHSA-7h2j-956f-4vf2) in @isaacs/brace-expansion
+
+### Changed
+
+- Updated @shellicar/build-clean to 1.2.2, biome to 2.3.14
+- Updated all dependencies to latest versions
+
 ## [1.4.0] - 2026-01-24
 
 ### Added
@@ -84,6 +95,7 @@ Fix missing README
 
 Initial release.
 
+[1.4.1]: https://github.com/shellicar/build-graphql/releases/tag/1.4.1
 [1.4.0]: https://github.com/shellicar/build-graphql/releases/tag/1.4.0
 [1.3.0]: https://github.com/shellicar/build-graphql/releases/tag/1.3.0
 [1.2.2]: https://github.com/shellicar/build-graphql/releases/tag/1.2.2
