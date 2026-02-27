@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.2] - 2026-02-28
+
+### Security
+
+- Fixed [CVE-2026-26996](https://github.com/advisories/GHSA-3ppc-4f35-3m26) in minimatch
+- Fixed [CVE-2025-69873](https://github.com/advisories/GHSA-2g4f-4pwh-qvx6) in ajv
+- Fixed [CVE-2026-2327](https://github.com/advisories/GHSA-38c4-r59v-3vqw) in markdown-it
+
+### Changed
+
+- Updated @shellicar/build-clean to 1.2.3, rollup to 4.59.0
+- Updated all dependencies to latest versions
+
 ## [1.4.1] - 2026-02-09
 
 ### Security
@@ -95,6 +108,7 @@ Fix missing README
 
 Initial release.
 
+[1.4.2]: https://github.com/shellicar/build-graphql/releases/tag/1.4.2
 [1.4.1]: https://github.com/shellicar/build-graphql/releases/tag/1.4.1
 [1.4.0]: https://github.com/shellicar/build-graphql/releases/tag/1.4.0
 [1.3.0]: https://github.com/shellicar/build-graphql/releases/tag/1.3.0
