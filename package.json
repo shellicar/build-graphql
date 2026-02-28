@@ -22,8 +22,8 @@
     "@biomejs/biome": "^2.4.4",
     "lefthook": "^2.1.1",
     "markdownlint-cli": "^0.47.0",
-    "npm-check-updates": "^19.6.2",
+    "npm-check-updates": "^19.6.3",
     "syncpack": "^13.0.4",
-    "turbo": "^2.8.11"
+    "turbo": "^2.8.12"
   }
 }
