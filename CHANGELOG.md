@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.3] - 2026-03-01
+
+### Security
+
+- Fixed [GHSA-5c6j-r48x-rmvq](https://github.com/advisories/GHSA-5c6j-r48x-rmvq) in serialize-javascript
+
+### Changed
+
+- Updated all dependencies to latest versions
+
 ## [1.4.2] - 2026-02-28
 
 ### Security
@@ -108,6 +118,7 @@ Fix missing README
 
 Initial release.
 
+[1.4.3]: https://github.com/shellicar/build-graphql/releases/tag/1.4.3
 [1.4.2]: https://github.com/shellicar/build-graphql/releases/tag/1.4.2
 [1.4.1]: https://github.com/shellicar/build-graphql/releases/tag/1.4.1
 [1.4.0]: https://github.com/shellicar/build-graphql/releases/tag/1.4.0
