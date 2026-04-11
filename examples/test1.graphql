@@ -1,7 +1,0 @@
-extend type Query {
-  hello: World
-}
-
-type World {
-  hello: String!
-}

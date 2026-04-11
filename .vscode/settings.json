@@ -1,9 +1,0 @@
-{
-  "cSpell.dictionaries": ["companies", "node", "npm", "softwareTerms", "typescript"],
-  "cSpell.language": "en-AU,en-GB",
-  "cSpell.enabledFileTypes": {
-    "*": false,
-    "markdown": true,
-    "typescript": true
-  }
-}
